@@ -5,17 +5,17 @@ public class F_round {
         String[] Begin1 = In.split("");
         StringBuffer EPBtext = new StringBuffer();
         for (int i = 0; i < 8; i++) {
-            Begin[i] = Begin1[EPB[i]];
-            EPBtext.append(Begin[i]);
+            EPBtext.append(Begin1[EPB[i]]);
         }
         return EPBtext.toString();
-    }
+    }//已测试可运行
 
     public static String XOR(String In, String Kn) {//异或运算
         StringBuffer Xor = new StringBuffer();
+        int k = In.length();
         String[] In1 = In.split("");
         String[] Kn1 = Kn.split("");
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < k; i++) {
             if (In1[i].equals(Kn1[i])) {//这里不确定能否正常运行
                 Xor.append("0");
             } else {
@@ -23,7 +23,7 @@ public class F_round {
             }
         }
         return Xor.toString();
-    }
+    }//已测试可运行
 
     public static String SBox1(String In) {
         String[] Begin = In.split("");
@@ -59,7 +59,7 @@ public class F_round {
             x = 3;
         }
         return Box1[x][y];
-    }
+    }//已测试可运行
 
     public static String SBox2(String In){
         String[] Begin = In.split("");
@@ -95,7 +95,7 @@ public class F_round {
             x = 3;
         }
         return Box2[x][y];
-    }
+    }//已测试可运行
 
     public static String SPBox(String In){
         String[] Begin = In.split("");
@@ -105,5 +105,5 @@ public class F_round {
             Out.append(Begin[SPB[i]]);
         }
         return Out.toString();
-    }
+    }//已测试可运行
 }

@@ -10,7 +10,7 @@ public class IP {
             Ciphertext.append(Pro[i]);
         }
         return Ciphertext.toString();//初始置换IP完成
-    }
+    }//已测试可运行
 
     public static String IP_1(String In) {//最终置换IP-1
         int[] IP = {3, 0, 2, 4, 6, 1, 7, 5};//各数字需减去1以对应下标
@@ -22,5 +22,5 @@ public class IP {
             Ciphertext.append(Pro[i]);
         }
         return Ciphertext.toString();
-    }
+    }//已测试可运行
 }
