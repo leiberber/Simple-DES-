@@ -1,14 +1,11 @@
 public class Cipher {
     public static String Cipher(String input) {
-        //K_1,K_2两个密钥的生成
-        String Key = "1010101010"; //8位密钥！！！密钥是十位的，已修改
+        //K_1,K_2两个密钥的生成  无问题
+        String Key = "1010101010"; //密钥是十位的，已修改
         String []K_10 = new String[10]; //转换的10位密钥
         String []L_shift = new String[5]; //左五位
-        String []R_shift = new String[5]; //右五位  不能用String！！要用String[]！！！
-        K_10 = K_extend.P10(Key).split(""); //将Key扩展10位
-        //for (int i = 0; i < 10; i++) { //用K_10储存10位密钥
-        //    K_10[i] = K_e10.substring(i, i + 1);
-        //}
+        String []R_shift = new String[5]; //右五位  
+        K_10 = K_extend.P10(Key).split(""); //P10BOX
         for (int i = 0; i < 5; i++) { //左右五位
             L_shift[i] = K_10[i];
             R_shift[i] = K_10[i + 5];
@@ -29,11 +26,17 @@ public class Cipher {
         R_s1 = K_extend.Leftshift1(R_s1);
         String L_s2 = K_extend.Leftshift2(L_s1);
         String R_s2 = K_extend.Leftshift2(R_s1);
-        String K_S1 = L_s1 + R_s1;
-        String K_S2 = L_s2 + R_s2;
+        StringBuffer K_S1 = new StringBuffer();
+        K_S1.append(L_s1);
+        K_S1.append(R_s1);
+        String K_1S = K_S1.toString();
+        StringBuffer K_S2 = new StringBuffer();
+        K_S2.append(L_s2);
+        K_S2.append(R_s2);
+        String K_2S = K_S2.toString();
         //将十位压缩为8位
-        String K_1 = K_extend.P8(K_S1);
-        String K_2 = K_extend.P8(K_S2);
+        String K_1 = K_extend.P8(K_1S);
+        String K_2 = K_extend.P8(K_2S);
         //结束
 
         //加密
@@ -44,9 +47,7 @@ public class Cipher {
         //IP置换
         String IP_text = IP.IP(input); //置换
         //字符串转化为字符串数组
-        for (int i = 0; i < 8; i++) {
-            text[i] = IP_text.substring(i, i + 1);
-        }
+        text = IP_text.split("");
         //分为左右两部分
         for (int i = 0; i < 4; i++) {
             L_text[i] = text[i];
@@ -54,13 +55,12 @@ public class Cipher {
         }
         //左右分别转化为字符串
         StringBuffer R_t1 = new StringBuffer();
+        StringBuffer L_t1 = new StringBuffer();
         for (int i = 0; i < R_text.length; i++) {
             R_t1.append(R_text[i]);
-        }
-        StringBuffer L_t1 = new StringBuffer();
-        for (int i = 0; i < L_text.length; i++) {
             L_t1.append(L_text[i]);
         }
+
         String R_Fk = R_t1.toString(); //右输入输出
         String L_IN = L_t1.toString(); //左输入
 
@@ -83,31 +83,43 @@ public class Cipher {
         String R_P4 = F_round.SPBox(R_S4); //S P-Box
         String L_Fk = F_round.XOR(L_IN, R_P4); //亦或操作
 
+        //测试
+        System.out.println(L_Fk + " " + R_Fk);
+        
         //SWAP
         String copy = R_Fk;
         R_Fk = L_Fk;
         L_Fk = copy;
 
         //Fk2函数
-        R_E8 = F_round.EPBox(R_Fk);
-        R_S8 = F_round.XOR(R_E8, K_2);
-        for(int i=0;i<4;i++){
-            String []a = R_S8.split("");
-            R_S4_1.append(a[i]);
-            R_S4_2.append(a[i+4]);
+        String R2_E8 = F_round.EPBox(R_Fk); // E P-Box
+        String R2_S8 = F_round.XOR(R2_E8, K_2); // 亦或K_2和R_E8
+        StringBuffer R2_S4_1 = new StringBuffer();
+        StringBuffer R2_S4_2 = new StringBuffer();
+        for (int i = 0; i < 4; i++) {
+            String[] a = R2_S8.split("");
+            R2_S4_1.append(a[i]);
+            R2_S4_2.append(a[i + 4]);
         }
-        R_S4_12 = F_round.SBox1(R_S4_1.toString());
-        R_S4_22 = F_round.SBox2(R_S4_2.toString());
-        StringBuffer R_S4_3_2 = new StringBuffer();
-        R_S4_3_2.append(R_S4_12);
-        R_S4_3_2.append(R_S4_22);
-        R_S4 = R_S4_3_2.toString();
-        R_P4 = F_round.SPBox(R_S4);
-        L_Fk = F_round.XOR(L_Fk, R_P4);
-        String IP_1_text = L_Fk + R_Fk;
+        String R2_S4_12 = F_round.SBox1(R2_S4_1.toString());
+        String R2_S4_22 = F_round.SBox2(R2_S4_2.toString());
+        StringBuffer R2_S4_3 = new StringBuffer();
+        R2_S4_3.append(R2_S4_12);
+        R2_S4_3.append(R2_S4_22);
+        String R2_S4 = R2_S4_3.toString();// S-Box
+        String R2_P4 = F_round.SPBox(R2_S4); // S P-Box
+        String L2_Fk = F_round.XOR(L_Fk, R2_P4); // 亦或操作
+
+        //测试
+        System.out.println(L2_Fk + " " + R_Fk);
+
+        StringBuffer IP_1_text = new StringBuffer();
+        IP_1_text.append(L2_Fk);
+        IP_1_text.append(R_Fk);
+        String IP_1_text_string = IP_1_text.toString();
 
         //IP_1置换
-        String Ciphertext = IP.IP_1(IP_1_text);
+        String Ciphertext = IP.IP_1(IP_1_text_string);
         return Ciphertext; //返回密文
     }
 }
