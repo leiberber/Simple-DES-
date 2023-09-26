@@ -82,9 +82,6 @@ public class Cipher {
         String R_S4 = R_S4_3.toString();//S-Box
         String R_P4 = F_round.SPBox(R_S4); //S P-Box
         String L_Fk = F_round.XOR(L_IN, R_P4); //亦或操作
-
-        //测试
-        System.out.println(L_Fk + " " + R_Fk);
         
         //SWAP
         String copy = R_Fk;
@@ -110,8 +107,6 @@ public class Cipher {
         String R2_P4 = F_round.SPBox(R2_S4); // S P-Box
         String L2_Fk = F_round.XOR(L_Fk, R2_P4); // 亦或操作
 
-        //测试
-        System.out.println(L2_Fk + " " + R_Fk);
 
         StringBuffer IP_1_text = new StringBuffer();
         IP_1_text.append(L2_Fk);

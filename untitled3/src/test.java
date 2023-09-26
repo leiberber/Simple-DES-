@@ -10,7 +10,7 @@ public class test {
         System.out.println("测试密钥1000001000");
         System.out.println("解密后明文如下:");
         System.out.println(Decipher.Decipher(Ciphertext,"1010101010"));
-        System.out.println(Decipher.Decipher(Ciphertext,"1000001000"));
+        System.out.println(Decipher.Decipher(Ciphertext, "1000001000"));
     }
-    //运行一下测试函数。问题在L2_Fk和R_Fk相等。测试函数在Cipher函数113行。
+    //错误在Sbox1 sbox2,已修正。能调通了。
 }
