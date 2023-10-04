@@ -1,5 +1,5 @@
 public class IP {
-    public static String IP(String In) {//初始置换IP
+    public static String IP_0(String In) {//初始置换IP
         int[] IP = {1, 5, 2, 0, 3, 7, 4, 6};//各数字需减去1以对应下标
         String[] Pro = In.split("");
         String[] Pro1 = In.split("");//复制一个备份字符串

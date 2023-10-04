@@ -1,7 +1,6 @@
 public class F_round {
     public static String EPBox(String In) {//位扩展
         int[] EPB = { 3, 0, 1, 2, 1, 2, 3, 0 };//各数字依然需要减去1
-        String[] Begin = In.split("");
         String[] Begin1 = In.split("");
         StringBuffer EPBtext = new StringBuffer();
         for (int i = 0; i < 8; i++) {

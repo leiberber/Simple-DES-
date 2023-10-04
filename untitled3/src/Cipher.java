@@ -1,7 +1,6 @@
 public class Cipher {
-    public static String Cipher(String input) {
+    public static String cipher(String input,String Key) {
         //K_1,K_2两个密钥的生成  无问题
-        String Key = "1010101010"; //密钥是十位的，已修改
         String []K_10 = new String[10]; //转换的10位密钥
         String []L_shift = new String[5]; //左五位
         String []R_shift = new String[5]; //右五位  
@@ -45,7 +44,7 @@ public class Cipher {
         String R_text[] = new String[4]; //置换后右4位
 
         //IP置换
-        String IP_text = IP.IP(input); //置换
+        String IP_text = IP.IP_0(input); //置换
         //字符串转化为字符串数组
         text = IP_text.split("");
         //分为左右两部分

@@ -1,5 +1,5 @@
 public class Brute_force {
-    public static String[] Brute_force(String Plaintext, String Ciphertext) {
+    public static String[] brute_force(String Plaintext, String Ciphertext) {
         //把Key转化为二进制字符串，然后蛮力匹配明密文和密钥
         int Key = 0;
         String[] SameKey = new String[100];
@@ -10,7 +10,7 @@ public class Brute_force {
             int digits = 10; // 指定位数
             String K = String.format("%" + digits + "s", Integer.toBinaryString(Key)).replace(' ', '0');
             
-            if (Plaintext.equals(Decipher.Decipher(Ciphertext, K))) {
+            if (Plaintext.equals(Decipher.decipher(Ciphertext, K))) {
                 SameKey[num] = K;
                 num++;
             }
