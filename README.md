@@ -1,5 +1,3 @@
 # Simple-DES-
-写了一个新UI，在Cipher_UI.java里面。
-<br /> 运行效果如图，具体的你看一下注释
-<br />![{2DWF`@NI2SSVD5EZ )%~H2](https://github.com/leiberber/Simple-DES-/assets/139038523/ac4a9be9-9cdd-4a7c-8a90-009b3b5f86f2)
-<br />修改了一下函数名，之前的函数名有问题，名字和文件名一样的话是构造函数，可以跑但有警告，我看不惯就改了。把Cipher这些函数改为小写cipher了，ip改成ip_0。具体你再看看
+把ASII里面函数改了，二进制和十进制转化简化了一下，
+目前发现，字符串明文只能八位数以上才能暴力破解好像，具体怎么回事你可以看看
