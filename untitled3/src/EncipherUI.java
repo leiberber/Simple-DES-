@@ -84,6 +84,21 @@ public class EncipherUI extends JFrame {
         gbc.gridy = 6;
         add(result, gbc);
 
+                JRadioButton option1 = new JRadioButton("8位二进制");
+        JRadioButton option2 = new JRadioButton("字符串");
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        add(option1);
+
+        gbc.gridx = 1;
+        add(option2);
+
+        // 创建按钮组，确保只能选择一个选项
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(option1);
+        buttonGroup.add(option2);
+
         //暴力破解监听器
         brute.addActionListener(new ActionListener() {
             @Override
@@ -107,15 +122,33 @@ public class EncipherUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String plaintext = plaintextField.getText();
                 String key = keyField.getText();
-                if (plaintext.length() != 8 || !isBinary(plaintext)) {
-                    JOptionPane.showMessageDialog(EncipherUI.this, "明文必须为8位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
+                if(option1.isSelected()) {
+                    if (plaintext.length() != 8 || !isBinary(plaintext)) {
+                        JOptionPane.showMessageDialog(EncipherUI.this, "明文必须为8位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+                else if(option2.isSelected()){
+                    if(plaintext == null){
+                        JOptionPane.showMessageDialog(EncipherUI.this,"明文不可为空！","错误",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(EncipherUI.this,"请选择明文格式","错误",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 if (key.length() != 10 || !isBinary(key)) {
                     JOptionPane.showMessageDialog(EncipherUI.this, "密钥必须为10位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                String ciphertext = Cipher.cipher(plaintext, key);
+                String ciphertext = new String();
+                if(option1.isSelected()) {
+                    ciphertext = Cipher.cipher(plaintext, key);
+                }
+                else if(option2.isSelected()){
+                    ciphertext = ASCII.asciiEncipher(plaintext, key);
+                }
                 ciphertextField.setText(ciphertext);
             }
         });
@@ -130,7 +163,13 @@ public class EncipherUI extends JFrame {
                     JOptionPane.showMessageDialog(EncipherUI.this, "解密密钥必须为10位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                String decryptedText = Decipher.decipher(ciphertext, decryptKey);
+                String decryptedText = new String();
+                if(option1.isSelected()) {
+                    decryptedText = Decipher.decipher(ciphertext, decryptKey);
+                }
+                else if(option2.isSelected()){
+                    decryptedText = ASCII.asciiDecipher(ciphertext,decryptKey);
+                }
                 decryptedField.setText(decryptedText);
             }
         });
