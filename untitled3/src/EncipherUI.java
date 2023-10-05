@@ -13,7 +13,7 @@ public class EncipherUI extends JFrame {
     public EncipherUI() {
         setTitle("加密解密程序"); // 设置窗口标题
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 设置窗口关闭时的操作
-        setSize(600, 400); // 设置窗口大小
+        setSize(600, 600); // 设置窗口大小
         setLocationRelativeTo(null); // 设置窗口居中显示
         setLayout(new GridBagLayout()); // 设置布局为网格包布局
         GridBagConstraints gbc = new GridBagConstraints(); // 创建网格包布局的约束对象
@@ -22,7 +22,7 @@ public class EncipherUI extends JFrame {
         //开始添加组件
         gbc.gridx = 0; // 设置组件在网格中的列索引
         gbc.gridy = 0; // 设置组件在网格中的行索引
-        add(new JLabel("明文（8位二进制数字）:"), gbc); // 添加标签组件到窗口
+        add(new JLabel("明文:"), gbc); // 添加标签组件到窗口
 
         gbc.gridx = 1; // 更新列索引
         plaintextField = new JTextField(10); // 创建一个文本框组件
@@ -78,20 +78,20 @@ public class EncipherUI extends JFrame {
         gbc.gridy = 6;
         add(new JLabel("破解结果:"), gbc);
 
-        JTextArea result = new JTextArea(4, 10);
+        JTextArea result = new JTextArea(20, 20);
         result.setEditable(false);
         gbc.gridx = 1;
         gbc.gridy = 6;
         add(result, gbc);
 
-                JRadioButton option1 = new JRadioButton("8位二进制");
+        JRadioButton option1 = new JRadioButton("8位二进制");
         JRadioButton option2 = new JRadioButton("字符串");
 
-        gbc.gridx = 0;
-        gbc.gridy = 7;
+        //gbc.gridx = 7;
+        //gbc.gridy = 0;
         add(option1);
 
-        gbc.gridx = 1;
+        //gbc.gridx = 3;
         add(option2);
 
         // 创建按钮组，确保只能选择一个选项

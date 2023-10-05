@@ -14,6 +14,11 @@ public class Brute_force {
                 SameKey[num] = K;
                 num++;
             }
+
+            else if (Plaintext.equals(ASCII.asciiDecipher(Ciphertext, K))) {
+                SameKey[num] = K;
+                num++;
+            }
             Key += 1;
         }
         return SameKey;
