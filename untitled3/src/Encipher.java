@@ -27,9 +27,6 @@ public class Encipher {
         }
     }
     
-    
-    
-
     // 判断字符串是否为二进制数字
     private static boolean isBinary(String str) {
         for (char c : str.toCharArray()) {

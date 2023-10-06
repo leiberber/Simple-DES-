@@ -61,5 +61,3 @@ public class K_extend {
         return left.toString();
     }//已测试可运行，但不知编程逻辑是否正确
 }
-
-
