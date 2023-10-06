@@ -5,55 +5,39 @@ ASCII加密/解密程序开发手册
 一、项目简介
 ------
 
-本项目实现了一个简单的ASCII码加密和解密程序，并包括了蛮力破解的功能。程序采用Java语言编写，主要包括以下类和方法：
+本项目实现了一个简单的加密和解密程序，并包括了蛮力破解的功能。程序采用Java语言编写，主要包括以下类和方法：
 
-* `ASCII`类：包含了`asciiEncipher`和`asciiDecipher`两个方法，分别用于对明文进行加密和对密文进行解密。
+* `Cipher`类和`Decipher`类：包含了`cipher`和`Decipher`两个方法，分别用于对二进制明文进行加密和对密文进行解密。
+* `ASCII`类：包含了`asciiEncipher`和`asciiDecipher`两个方法，分别用于对字符串明文进行加密和对密文进行解密。
 * `Brute_force`类：包含了`brute_force`方法，用于对密文进行蛮力破解。
 * `IP`类：包含了`IP_0`和`IP_1`两个方法，分别用于进行初始置换和最终置换。
 * `F_round`类：包含了`EPBox`、`XOR`、`SBox1`、`SBox2`、`SPBox`等多个方法，用于进行扩展置换、异或运算、S盒替换和P盒置换等操作。
 * `K_extend`类：包含了`P10`和`P8`两个方法，用于进行密钥的扩展和压缩。
 * `Leftshift1`和`Leftshift2`类：包含了`Leftshift1`和`Leftshift2`两个方法，用于进行循环左移操作。
-* `test`类：包含了`main`方法，用于进行测试。
+* `test_speed`类：包含了`main`方法，用于测试破解速度。
+
 
 二、使用方法
 ------
 
-1. 设置明文和密钥：在`test`类的`main`方法中，您可以设置明文和密钥。例如，以下代码将明文设置为"dddddddd"，密钥设置为"1000110010"：
+1. 创建`EncipherUI`对象：在`main`方法中创建一个`EncipherUI`对象，该对象将负责处理用户界面和逻辑。
 
 
 ```java
-String Plaintext = "dddddddd";
-String Key = "1000110010";
+EncipherUI encipherUI = new EncipherUI();
 ```
-2. 加密明文：调用`ASCII`类的`asciiEncipher`方法，将明文和密钥作为参数传入，得到加密后的密文。例如，以下代码将明文加密为密文：
+2. 显示用户界面：调用`EncipherUI`对象的`showUI`方法，该方法将显示用户界面并等待用户输入。
 
 
 ```java
-String Ciphertext = ASCII.asciiEncipher(Plaintext, Key);
+encipherUI.showUI();
 ```
-3. 解密密文：调用`ASCII`类的`asciiDecipher`方法，将密文和密钥作为参数传入，得到解密后的明文。例如，以下代码将密文解密为明文：
+3. 处理用户输入：在用户界面上，用户可以输入明文和密钥，并选择加密或解密操作。`EncipherUI`类将处理用户输入，并调用相应的加密或解密方法。
+4. 加密明文：如果用户选择了加密操作，`EncipherUI`类将调用`ASCII`类的`asciiEncipher`方法，将明文和密钥作为参数传入，得到加密后的密文。
+5. 解密密文：如果用户选择了解密操作，`EncipherUI`类将调用`ASCII`类的`asciiDecipher`方法，将密文和密钥作为参数传入，得到解密后的明文。
+6. 显示结果：`EncipherUI`类将显示加密或解密后的结果给用户。
 
 
-```java
-String DecryptedText = ASCII.asciiDecipher(Ciphertext, Key);
-```
-4. 蛮力破解：调用`Brute_force`类的`brute_force`方法，将明文和密文作为参数传入，得到所有可能的密钥。例如，以下代码将密文进行蛮力破解：
-
-
-```java
-String[] SameKey = Brute_force.brute_force(Plaintext, Ciphertext);
-```
-5. 遍历密钥：遍历所有可能的密钥，对密文进行解密，并输出明文。例如，以下代码遍历所有可能的密钥，并输出对应的明文：
-
-
-```java
-for (int i = 0; i < SameKey.length; i++) {
-    if (SameKey[i] != null) {
-        System.out.print("检测到密钥" + SameKey[i]);
-        System.out.println(" 明文为" + ASCII.asciiDecipher(Ciphertext, SameKey[i]));
-    }
-}
-```
 三、注意事项
 ------
 
