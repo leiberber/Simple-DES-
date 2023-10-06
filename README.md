@@ -1,7 +1,4 @@
-# Simple-DES-
-ASCII加密/解密程序开发手册
-=================
-
+# Simple-DES-开发手册
 一、项目简介
 ------
 
@@ -20,11 +17,42 @@ ASCII加密/解密程序开发手册
 二、使用方法
 ------
 
-1. 运行`EncipherUI.java`用于实现加解密和破解。运行`test_speed.java`以测试破解速度。
-2. 处理用户输入：在用户界面上，用户可以输入明文和密钥，并选择输入数据类型，支持八位二进制数字和字符输入。
+1. 运行`EncipherUI.java`用于实现加解密和破解。
+
+2. 处理用户输入：在用户界面上，用户可以输入明文和密钥，并选择输入数据类型，支持八位二进制数字和字符输入。输入类型错误会报错
+
+   明文错误：
+
+   ![](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\Z{VN$OB534L$SSXKDBW}WRV.png)
+
+   密钥输入错误：
+
+   ![Keywrong](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\Keywrong.png)
+
 3. 加密明文：输入完密钥和明文后，点击加密将进行加密操作。
+
 4. 解密密文：加密完成后，点击解密将进行解密操作。
+
 5. 蛮力破解：点击蛮力破解，将破解密钥，并将所有可用的Key显示出来。
+
+   效果如下：
+
+   二进制数：
+
+   ![b](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\b.png)
+
+   字符：
+
+   ![a](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\a.png)
+
+6. 运行`test_speed.java`以测试破解速度。
+
+   test_speed测试效果：
+
+   ![](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\W`M%{TXO@Y3J3%XB5Y524O5.png)
+
+   
+
 
 
 三、注意事项
