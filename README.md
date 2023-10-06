@@ -49,7 +49,7 @@
 
    test_speed测试效果：
 
-   ![](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\W`M%{TXO@Y3J3%XB5Y524O5.png)
+   ![](https://github.com/leiberber/Simple-DES-/blob/main/W%60M%25%7BTXO%40Y3J3%25XB5Y524O5.png)
 
    
 
