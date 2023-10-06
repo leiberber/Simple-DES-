@@ -23,11 +23,11 @@
 
    明文错误：
 
-   ![](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\Z{VN$OB534L$SSXKDBW}WRV.png)
+   ![](image/Keywrong2.png)
 
    密钥输入错误：
 
-   ![Keywrong](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\Keywrong.png)
+   ![](image/Keywrong.png)
 
 3. 加密明文：输入完密钥和明文后，点击加密将进行加密操作。
 
@@ -39,18 +39,17 @@
 
    二进制数：
 
-   ![b](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\b.png)
+  ![](image/b.png)
 
    字符：
 
-   ![a](C:\Users\lei'berber\AppData\Roaming\Tencent\Users\3126098515\QQ\WinTemp\RichOle\a.png)
+   ![](image/a.png)
 
 6. 运行`test_speed.java`以测试破解速度。
 
    test_speed测试效果：
 
-   ![](https://github.com/leiberber/Simple-DES-/blob/main/W%60M%25%7BTXO%40Y3J3%25XB5Y524O5.png)
-
+   ![](image/speed.png)
    
 
 
