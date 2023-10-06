@@ -33,8 +33,8 @@ EncipherUI encipherUI = new EncipherUI();
 encipherUI.showUI();
 ```
 3. 处理用户输入：在用户界面上，用户可以输入明文和密钥，并选择加密或解密操作。`EncipherUI`类将处理用户输入，并调用相应的加密或解密方法。
-4. 加密明文：如果用户选择了加密操作，`EncipherUI`类将调用`ASCII`类的`asciiEncipher`方法，将明文和密钥作为参数传入，得到加密后的密文。
-5. 解密密文：如果用户选择了解密操作，`EncipherUI`类将调用`ASCII`类的`asciiDecipher`方法，将密文和密钥作为参数传入，得到解密后的明文。
+4. 加密明文：如果用户选择了加密操作，`EncipherUI`类将调用`ASCII`类的`asciiEncipher`方法或者`Cipher`类的`cipher`方法，将明文和密钥作为参数传入，得到加密后的密文。
+5. 解密密文：如果用户选择了解密操作，`EncipherUI`类将调用`ASCII`类的`asciiDecipher`方法或者`Decipher`类的`decipher`方法，将密文和密钥作为参数传入，得到解密后的明文。
 6. 显示结果：`EncipherUI`类将显示加密或解密后的结果给用户。
 
 
