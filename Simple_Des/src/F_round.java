@@ -57,7 +57,7 @@ public class F_round {
         if (Begin[1].equals("1") && Begin[2].equals("1")) {
             x = 3;
         }
-        return Box1[x][y];
+        return Box1[y][x];
     }//已测试可运行
 
     public static String SBox2(String In) {
@@ -93,7 +93,7 @@ public class F_round {
         if (Begin[1].equals("1") && Begin[2].equals("1")) {
             x = 3;
         }
-        return Box2[x][y];
+        return Box2[y][x];
     }//已测试可运行
 
     public static String SPBox(String In) {

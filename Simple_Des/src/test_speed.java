@@ -9,9 +9,9 @@ public class test_speed {
         System.out.println("蛮力破解");
         String[] SameKey = Brute_force.brute_force(Plaintext, Ciphertext);
 
+        
         long millis1 = System.currentTimeMillis();
         //计时
-        
 
         for (int i = 0; i < SameKey.length; i++) {
             if (SameKey[i] != null) {
@@ -23,5 +23,6 @@ public class test_speed {
         long millis2 = System.currentTimeMillis();
         long time = millis2 - millis1;//经过的毫秒数
         System.out.println("耗时：" + time + "ms");
+
     }
 }

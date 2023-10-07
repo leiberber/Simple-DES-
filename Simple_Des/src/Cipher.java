@@ -20,11 +20,13 @@ public class Cipher {
         String L_s1 = L_shift1.toString();
         String R_s1 = R_shift1.toString();
 
+         
         //左右分别Leftshift i次
-        L_s1 = K_extend.Leftshift1(L_s1);
-        R_s1 = K_extend.Leftshift1(R_s1);
         String L_s2 = K_extend.Leftshift2(L_s1);
         String R_s2 = K_extend.Leftshift2(R_s1);
+        L_s1 = K_extend.Leftshift1(L_s1);
+        R_s1 = K_extend.Leftshift1(R_s1);
+        
         StringBuffer K_S1 = new StringBuffer();
         K_S1.append(L_s1);
         K_S1.append(R_s1);
