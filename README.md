@@ -56,8 +56,11 @@
 
 测试效果：
    本组加密：
+   
    ![](image/mine.png)
+   
    其他小组加密：
+   
    ![](image/other.jpg)
 
 三、注意事项
