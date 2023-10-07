@@ -9,6 +9,7 @@ public class EncipherUI extends JFrame {
     private JTextField ciphertextField; // 密文输出框
     private JTextField decryptKeyField; // 解密密钥输入框
     private JTextField decryptedField; // 解密后明文输出框
+    public static int a = 0;
 
     public EncipherUI() {
         setTitle("加密解密程序"); // 设置窗口标题
@@ -46,7 +47,7 @@ public class EncipherUI extends JFrame {
 
         gbc.gridx = 1;
         ciphertextField = new JTextField(10);
-        ciphertextField.setEditable(false);
+        //ciphertextField.setEditable(false);
         add(ciphertextField, gbc);
 
         gbc.gridx = 0;
@@ -129,7 +130,7 @@ public class EncipherUI extends JFrame {
                     }
                 }
                 else if(option2.isSelected()){
-                    if(plaintext == null){
+                    if(plaintext.equals("")){
                         JOptionPane.showMessageDialog(EncipherUI.this,"明文不可为空！","错误",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
@@ -159,9 +160,19 @@ public class EncipherUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String ciphertext = ciphertextField.getText();
                 String decryptKey = decryptKeyField.getText();
-                if (decryptKey.length() != 10 || !isBinary(decryptKey)) {
-                    JOptionPane.showMessageDialog(EncipherUI.this, "解密密钥必须为10位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
+                if(!option1.isSelected()&&!option2.isSelected()){
+                    JOptionPane.showMessageDialog(EncipherUI.this,"请选择明文格式","错误",JOptionPane.ERROR_MESSAGE);
                     return;
+                }
+                else {
+                    if ((decryptKey.length() != 10 || !isBinary(decryptKey))) {
+                        JOptionPane.showMessageDialog(EncipherUI.this, "解密密钥必须为10位二进制数字", "错误", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    if(ciphertext.equals("")){
+                        JOptionPane.showMessageDialog(EncipherUI.this,"密文不可为空","错误",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
                 String decryptedText = new String();
                 if(option1.isSelected()) {
@@ -175,7 +186,7 @@ public class EncipherUI extends JFrame {
         });
         setVisible(true);
     }
-    
+
     //判断是否是二进制数
     private boolean isBinary(String str) {
         for (char c : str.toCharArray()) {
