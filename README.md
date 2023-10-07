@@ -52,7 +52,13 @@
    ![](image/speed.png)
    
 
+7.为保证程序无误，我们进行了组件测试，与其他Simple_DES小组一起进行了组件测试。
 
+测试效果：
+   本组加密：
+   ![](image/mine.png)
+   其他小组加密：
+   ![](image/other.jpg)
 
 三、注意事项
 ------
